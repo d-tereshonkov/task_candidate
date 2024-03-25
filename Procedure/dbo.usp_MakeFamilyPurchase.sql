@@ -18,8 +18,9 @@ begin
     from dbo.Family
     where SurName = FamilySurName;
     
-    /* Проверяем, существует ли такая семья
-       При передаче несуществующего dbo.Family.SurName пользователю выдается ошибка, что такой семьи нет
+    /* 
+    Проверяем, существует ли такая семья
+    При передаче несуществующего dbo.Family.SurName пользователю выдается ошибка, что такой семьи нет
     */
     if FamilyId is null then
         signal sqlstate '45000' 
@@ -35,6 +36,5 @@ begin
         update dbo.Family
         set BudgetValue = BudgetValue - TotalBasketValue
         where ID = FamilyId;
-
     end if;
 end
